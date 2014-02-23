@@ -19,9 +19,6 @@
 
 - (void)incrementPomodoroCount {
     pomodoroCount++;
-    if(pomodoroCount > 4) {
-        pomodoroCount = 1;
-    }
 }
 
 - (void)resetPomodoroCount {
