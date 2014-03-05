@@ -13,8 +13,18 @@
 
 @interface Timer : NSObject
 
+@property(nonatomic, readonly) NSInteger secondsRemaining;
+@property(nonatomic, readonly) TimerContext *context;
+
+@property(nonatomic, weak) id <TimerListener> listener;
+
+@property(nonatomic, getter=isPaused) BOOL paused;
+@property(nonatomic, readonly, getter=isRunning) BOOL active;
+
 - (id)initWithListener:(id <TimerListener>)listener;
-- (void)start:(int)minutes context:(TimerContext *)context;
+
+- (void)start:(NSInteger)minutes context:(TimerContext *)context;
+
 - (void)stop;
 
 @end

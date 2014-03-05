@@ -11,8 +11,11 @@
 @interface Sounds : NSObject
 
 - (void)crank;
+
 - (void)startTicTac;
+
 - (void)stopTicTac;
+
 - (void)bell;
 
 @end

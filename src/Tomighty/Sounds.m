@@ -8,21 +8,19 @@
 
 #import "Sounds.h"
 
-@implementation Sounds
-{
-    __strong NSSound *crankSound;
-    __strong NSSound *ticTacSound;
-    __strong NSSound *bell;
+@implementation Sounds {
+    NSSound *crankSound;
+    NSSound *ticTacSound;
+    NSSound *bell;
 }
 
-- (id)init
-{
+- (id)init {
     self = [super init];
-    if(self) {
+    if (self) {
         crankSound = [NSSound soundNamed:@"crank"];
         ticTacSound = [NSSound soundNamed:@"tictac"];
         bell = [NSSound soundNamed:@"deskbell"];
-        
+
         [ticTacSound setLoops:YES];
     }
     return self;

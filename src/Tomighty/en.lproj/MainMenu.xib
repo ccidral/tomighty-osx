@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">13A603</string>
+		<string key="IBDocument.SystemVersion">12F45</string>
 		<string key="IBDocument.InterfaceBuilderVersion">4514</string>
-		<string key="IBDocument.AppKitVersion">1265</string>
-		<string key="IBDocument.HIToolboxVersion">695.00</string>
+		<string key="IBDocument.AppKitVersion">1187.40</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">4514</string>
@@ -58,6 +58,15 @@
 						<object class="NSAttributedString" key="NSAttributedTitle">
 							<string key="NSString"/>
 						</object>
+					</object>
+					<object class="NSMenuItem" id="639779657">
+						<reference key="NSMenu" ref="816874398"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<string key="NSTitle">Pause</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="453957225"/>
+						<reference key="NSMixedImage" ref="113192098"/>
 					</object>
 					<object class="NSMenuItem" id="933915061">
 						<reference key="NSMenu" ref="816874398"/>
@@ -151,7 +160,8 @@
 					<object class="NSMenuItem" id="218567737">
 						<reference key="NSMenu" ref="816874398"/>
 						<string key="NSTitle">Preferences...</string>
-						<string key="NSKeyEquiv"/>
+						<string key="NSKeyEquiv">,</string>
+						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="453957225"/>
 						<reference key="NSMixedImage" ref="113192098"/>
@@ -317,6 +327,22 @@
 					</object>
 					<int key="connectionID">583</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">pauseTimerMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="639779657"/>
+					</object>
+					<int key="connectionID">585</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">pauseTimer:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="639779657"/>
+					</object>
+					<int key="connectionID">586</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -372,6 +398,7 @@
 							<reference ref="436795366"/>
 							<reference ref="655121380"/>
 							<reference ref="682396664"/>
+							<reference ref="639779657"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -445,6 +472,11 @@
 						<reference key="object" ref="682396664"/>
 						<reference key="parent" ref="816874398"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">584</int>
+						<reference key="object" ref="639779657"/>
+						<reference key="parent" ref="816874398"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -468,12 +500,13 @@
 				<string key="577.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="578.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="580.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="584.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">583</int>
+			<int key="maxID">586</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -481,6 +514,7 @@
 					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="pauseTimer:">id</string>
 						<string key="resetPomodoroCount:">id</string>
 						<string key="showPreferences:">id</string>
 						<string key="startLongBreak:">id</string>
@@ -489,6 +523,10 @@
 						<string key="stopTimer:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="pauseTimer:">
+							<string key="name">pauseTimer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="resetPomodoroCount:">
 							<string key="name">resetPomodoroCount:</string>
 							<string key="candidateClassName">id</string>
@@ -515,6 +553,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="pauseTimerMenuItem">NSMenuItem</string>
 						<string key="pomodoroCountMenuItem">NSMenuItem</string>
 						<string key="remainingTimeMenuItem">NSMenuItem</string>
 						<string key="resetPomodoroCountMenuItem">NSMenuItem</string>
@@ -525,6 +564,10 @@
 						<string key="stopTimerMenuItem">NSMenuItem</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="pauseTimerMenuItem">
+							<string key="name">pauseTimerMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="pomodoroCountMenuItem">
 							<string key="name">pomodoroCountMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>

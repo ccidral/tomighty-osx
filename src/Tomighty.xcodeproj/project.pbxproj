@@ -36,6 +36,7 @@
 		30FA9D9F17A586A0005D0A80 /* start-long-break.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 30FA9D9B17A586A0005D0A80 /* start-long-break.tiff */; };
 		30FA9DA117A586A0005D0A80 /* start-short-break.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 30FA9D9D17A586A0005D0A80 /* start-short-break.tiff */; };
 		30FA9DA417A587CB005D0A80 /* stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 30FA9DA317A587CB005D0A80 /* stop.tiff */; };
+		9495F93918C7DCDD00AEACC2 /* pause.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 9495F93818C7DCDD00AEACC2 /* pause.tiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		30FA9D9B17A586A0005D0A80 /* start-long-break.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "start-long-break.tiff"; sourceTree = "<group>"; };
 		30FA9D9D17A586A0005D0A80 /* start-short-break.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "start-short-break.tiff"; sourceTree = "<group>"; };
 		30FA9DA317A587CB005D0A80 /* stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = stop.tiff; sourceTree = "<group>"; };
+		9495F93818C7DCDD00AEACC2 /* pause.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pause.tiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		301ABCF317A5A53300F19F3C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				9495F93818C7DCDD00AEACC2 /* pause.tiff */,
 				3055C8C618297D540040918A /* status-normal.tiff */,
 				301ABCF117A5999400F19F3C /* clock.tiff */,
 				301ABCED17A593AA00F19F3C /* start-pomodoro.tiff */,
@@ -274,6 +277,7 @@
 				30FA9DA417A587CB005D0A80 /* stop.tiff in Resources */,
 				301ABCE617A5910C00F19F3C /* status-long-break.tiff in Resources */,
 				301ABCE817A5910C00F19F3C /* status-short-break.tiff in Resources */,
+				9495F93918C7DCDD00AEACC2 /* pause.tiff in Resources */,
 				301ABCEF17A593AA00F19F3C /* start-pomodoro.tiff in Resources */,
 				3055C8C718297D540040918A /* status-normal.tiff in Resources */,
 				301ABCF017A593AA00F19F3C /* status-pomodoro.tiff in Resources */,
@@ -339,7 +343,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -372,7 +375,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;

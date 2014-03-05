@@ -9,23 +9,18 @@
 #import "Tomighty.h"
 
 @implementation Tomighty
-{
-    int pomodoroCount;
-}
-
-- (int)pomodoroCount {
-    return pomodoroCount;
-}
 
 - (void)incrementPomodoroCount {
-    pomodoroCount++;
-    if(pomodoroCount > 4) {
-        pomodoroCount = 1;
+    _pomodoroCount++;
+
+    // TODO : set this in preferences
+    if (_pomodoroCount > 4) {
+        _pomodoroCount = 1;
     }
 }
 
 - (void)resetPomodoroCount {
-    pomodoroCount = 0;
+    _pomodoroCount = 0;
 }
 
 @end

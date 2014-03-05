@@ -10,7 +10,8 @@
 
 @interface ImageLoader : NSObject
 
-+ (NSImage*) loadIcon:(NSString*)name;
-+ (NSImage*) loadTiffImage:(NSString*)name withSize:(int)size;
++ (NSImage *)loadIcon:(NSString *)name;
+
++ (NSImage *)loadTiffImage:(NSString *)name withSize:(int)size;
 
 @end

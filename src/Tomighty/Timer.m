@@ -7,64 +7,79 @@
 //
 
 #import "Timer.h"
-#import "TimerContext.h"
-#import "TimerListener.h"
 
 #define SIXTY_SECONDS 60
 
-@implementation Timer
-{
-    int secondsRemaining;
-    __strong NSTimer *timer;
-    __strong TimerContext *context;
-    __weak id <TimerListener> listener;
+@implementation Timer {
+    NSTimer *timer;
 }
 
 - (id)initWithListener:(id <TimerListener>)aListener {
     self = [super init];
-    if(self) {
-        listener = aListener;
+    if (self) {
+        _listener = aListener;
     }
     return self;
 }
 
-- (void)start:(int)minutes context:(TimerContext *)aContext {
-    secondsRemaining = minutes * SIXTY_SECONDS;
-    context = aContext;
+- (void)start:(NSInteger)minutes context:(TimerContext *)aContext {
+    _secondsRemaining = minutes * SIXTY_SECONDS;
+    _context = aContext;
+    _paused = NO;
+    _active = YES;
     [self startTimer];
-    [listener timerStarted:secondsRemaining context:context];
+    [self.listener timerStarted:_secondsRemaining context:_context];
 }
 
 - (void)startTimer {
     [timer invalidate];
     timer = [NSTimer timerWithTimeInterval:1.0
-                     target:self
-                     selector:@selector(tick:)
-                     userInfo:nil
-                     repeats:YES];
+            target:self
+            selector:@selector(tick:)
+            userInfo:nil
+            repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
-- (void)stop {
+- (void)stopTimer {
     [timer invalidate];
     timer = nil;
-    [listener timerStopped];
+}
+
+- (void)stop {
+    [self stopTimer];
+    _context = nil;
+    _secondsRemaining = 0;
+    _paused = NO;
+    _active = NO;
+    [self.listener timerStopped];
 }
 
 - (void)tick:(NSTimer *)aTimer {
-    secondsRemaining--;
-    if(secondsRemaining > 0) {
-        [listener timerTick:secondsRemaining];
-    }
-    else {
+    _secondsRemaining--;
+    if (_secondsRemaining > 0) {
+        [self.listener timerTick:_secondsRemaining];
+    } else {
         [self finished];
     }
 }
 
 - (void)finished {
-    [self stop];
-    [listener timerFinished:context];
-    context = nil;
+    TimerContext *context = _context;
+    [self stop]; // we must backup context because it will get cleared in stop call
+    [self.listener timerFinished:context];
+}
+
+- (void)setPaused:(BOOL)paused {
+    if (_paused != paused) {
+        _paused = paused;
+
+        if (_paused) {
+            [self stopTimer];
+        } else {
+            [self startTimer];
+        }
+    }
 }
 
 @end

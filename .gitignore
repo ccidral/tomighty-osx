@@ -1,2 +1,4 @@
-Tomighty.xcodeproj/project.xcworkspace/
-Tomighty.xcodeproj/xcuserdata/
+**/*.xcodeproj/project.xcworkspace/xcshareddata/*.xccheckout
+**/*.xcodeproj/project.xcworkspace/xcuserdata/
+**/*.xcodeproj/xcuserdata/
+src/.idea/*

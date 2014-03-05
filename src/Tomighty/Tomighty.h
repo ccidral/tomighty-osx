@@ -10,8 +10,10 @@
 
 @interface Tomighty : NSObject
 
-- (int)pomodoroCount;
+@property (nonatomic, readonly) NSInteger pomodoroCount;
+
 - (void)incrementPomodoroCount;
+
 - (void)resetPomodoroCount;
 
 @end

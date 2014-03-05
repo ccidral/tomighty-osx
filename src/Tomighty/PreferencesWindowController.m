@@ -11,22 +11,22 @@
 
 @implementation PreferencesWindowController
 
-- (id)init
-{
+- (id)init {
     self = [super initWithWindowNibName:@"PreferencesWindow"];
     return self;
 }
 
-- (void)windowDidLoad
-{
+- (void)windowDidLoad {
     [super windowDidLoad];
-    [self.time_pomodoro setIntValue:[Preferences intValue:PREF_TIME_POMODORO]];
-    [self.time_shortBreak setIntValue:[Preferences intValue:PREF_TIME_SHORT_BREAK]];
-    [self.time_longBreak setIntValue:[Preferences intValue:PREF_TIME_LONG_BREAK]];
-    [self.sound_on_timer_start setState:[Preferences intValue:PREF_SOUND_TIMER_START]];
-    [self.sound_on_timer_finish setState:[Preferences intValue:PREF_SOUND_TIMER_FINISH]];
-    [self.sound_tictac_during_pomodoro setState:[Preferences intValue:PREF_SOUND_TICTAC_POMODORO]];
-    [self.sound_tictac_during_break setState:[Preferences intValue:PREF_SOUND_TICTAC_BREAK]];
+    [self.time_pomodoro setIntegerValue:[Preferences integerForKey:PREF_TIME_POMODORO]];
+    [self.time_shortBreak setIntegerValue:[Preferences integerForKey:PREF_TIME_SHORT_BREAK]];
+    [self.time_longBreak setIntegerValue:[Preferences integerForKey:PREF_TIME_LONG_BREAK]];
+    [self.sound_on_timer_start setState:[Preferences boolForKey:PREF_SOUND_TIMER_START]];
+    [self.sound_on_timer_finish setState:[Preferences boolForKey:PREF_SOUND_TIMER_FINISH]];
+    [self.sound_tictac_during_pomodoro setState:[Preferences boolForKey:PREF_SOUND_TICTAC_POMODORO]];
+    [self.sound_tictac_during_break setState:[Preferences boolForKey:PREF_SOUND_TICTAC_BREAK]];
+    [self.general_show_in_status selectItemAtIndex:[Preferences integerForKey:PREF_GENERAL_SHOW_IN_STATUS]];
+    [self.general_allow_pause setState:[Preferences integerForKey:PREF_GENERAL_ALLOW_PAUSE]];
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
@@ -35,31 +35,39 @@
 }
 
 - (IBAction)save_time_pomodoro:(id)sender {
-    [Preferences setIntValue:PREF_TIME_POMODORO value:[self.time_pomodoro intValue]];
+    [Preferences setInteger:[self.time_pomodoro integerValue] forKey:PREF_TIME_POMODORO];
 }
 
 - (IBAction)save_time_shortBreak:(id)sender {
-    [Preferences setIntValue:PREF_TIME_SHORT_BREAK value:[self.time_shortBreak intValue]];
+    [Preferences setInteger:[self.time_shortBreak integerValue] forKey:PREF_TIME_SHORT_BREAK];
 }
 
 - (IBAction)save_time_longBreak:(id)sender {
-    [Preferences setIntValue:PREF_TIME_LONG_BREAK value:[self.time_longBreak intValue]];
+    [Preferences setInteger:[self.time_longBreak integerValue] forKey:PREF_TIME_LONG_BREAK];
 }
 
 - (IBAction)save_sound_play_on_timer_start:(id)sender {
-    [Preferences setIntValue:PREF_SOUND_TIMER_START value:(int)[self.sound_on_timer_start state]];
+    [Preferences setBool:([self.sound_on_timer_start state] == NSOnState) forKey:PREF_SOUND_TIMER_START];
 }
 
 - (IBAction)save_sound_play_on_timer_finish:(id)sender {
-    [Preferences setIntValue:PREF_SOUND_TIMER_FINISH value:(int)[self.sound_on_timer_finish state]];
+    [Preferences setBool:([self.sound_on_timer_finish state] == NSOnState) forKey:PREF_SOUND_TIMER_FINISH];
 }
 
 - (IBAction)save_sound_play_tictac_during_pomodoro:(id)sender {
-    [Preferences setIntValue:PREF_SOUND_TICTAC_POMODORO value:(int)[self.sound_tictac_during_pomodoro state]];
+    [Preferences setBool:([self.sound_tictac_during_pomodoro state] == NSOnState) forKey:PREF_SOUND_TICTAC_POMODORO];
 }
 
 - (IBAction)save_sound_play_tictac_during_break:(id)sender {
-    [Preferences setIntValue:PREF_SOUND_TICTAC_BREAK value:(int)[self.sound_tictac_during_break state]];
+    [Preferences setBool:([self.sound_tictac_during_break state] == NSOnState) forKey:PREF_SOUND_TICTAC_BREAK];
+}
+
+- (IBAction)save_general_show_in_status:(id)sender {
+    [Preferences setInteger:self.general_show_in_status.indexOfSelectedItem forKey:PREF_GENERAL_SHOW_IN_STATUS];
+}
+
+- (IBAction)save_general_allow_pause:(id)sender {
+    [Preferences setBool:([self.general_allow_pause state] == NSOnState) forKey:PREF_GENERAL_ALLOW_PAUSE];
 }
 
 @end
