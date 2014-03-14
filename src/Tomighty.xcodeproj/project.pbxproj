@@ -32,10 +32,6 @@
 		304AF83518BD04BF00A2EA74 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304AF83418BD04BE00A2EA74 /* XCTest.framework */; };
 		304AF83618BD04BF00A2EA74 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304AF81518BD04BE00A2EA74 /* Cocoa.framework */; };
 		304AF83E18BD04BF00A2EA74 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 304AF83C18BD04BF00A2EA74 /* InfoPlist.strings */; };
-		3054083318D259E2009523AC /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3054083218D259E2009523AC /* OCMockito.framework */; };
-		3054083518D259F0009523AC /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3054083418D259F0009523AC /* OCHamcrest.framework */; };
-		3054083618D266DE009523AC /* OCHamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3054083418D259F0009523AC /* OCHamcrest.framework */; };
-		3054083718D266DE009523AC /* OCMockito.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3054083218D259E2009523AC /* OCMockito.framework */; };
 		305D161E18CD13F100CE6A34 /* tomighty.icns in Resources */ = {isa = PBXBuildFile; fileRef = 305D161D18CD13F100CE6A34 /* tomighty.icns */; };
 		309394E718D0C76100D6C71A /* TYDefaultStatusIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 309394E618D0C76100D6C71A /* TYDefaultStatusIcon.m */; };
 		309394EA18D0CBEC00D6C71A /* TYImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 309394E918D0CBEC00D6C71A /* TYImageLoader.m */; };
@@ -63,6 +59,7 @@
 		30CFBF1218BD76F7000266B4 /* TYMockSystemTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CFBF1118BD76F7000266B4 /* TYMockSystemTimer.m */; };
 		30DB72F618CD4FC800293915 /* TYTomightyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F518CD4FC800293915 /* TYTomightyTests.m */; };
 		30DB72FA18CD54D200293915 /* TYDefaultTomighty.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F918CD54D200293915 /* TYDefaultTomighty.m */; };
+		88742E1C44894488BB0F167C /* libPods-TomightyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1A27968CA44FEFB1DA3DB3 /* libPods-TomightyTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,14 +79,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				3054083618D266DE009523AC /* OCHamcrest.framework in CopyFiles */,
-				3054083718D266DE009523AC /* OCMockito.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B1A27968CA44FEFB1DA3DB3 /* libPods-TomightyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TomightyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		300AE29118D1444400264309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		300AE29318D1471F00264309 /* TYPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYPreferencesWindowController.h; path = Core/UI/TYPreferencesWindowController.h; sourceTree = "<group>"; };
 		300AE29418D1471F00264309 /* TYPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYPreferencesWindowController.m; path = Core/UI/TYPreferencesWindowController.m; sourceTree = "<group>"; };
@@ -135,8 +131,6 @@
 		304AF83418BD04BE00A2EA74 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		304AF83B18BD04BF00A2EA74 /* TomightyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TomightyTests-Info.plist"; sourceTree = "<group>"; };
 		304AF83D18BD04BF00A2EA74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3054083218D259E2009523AC /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMockito.framework; sourceTree = "<group>"; };
-		3054083418D259F0009523AC /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCHamcrest.framework; sourceTree = "<group>"; };
 		305D161418CCEE3500CE6A34 /* TYTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYTimer.h; path = Core/Timer/TYTimer.h; sourceTree = "<group>"; };
 		305D161618CD02E100CE6A34 /* TYAppUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYAppUI.h; path = Core/UI/TYAppUI.h; sourceTree = "<group>"; };
 		305D161D18CD13F100CE6A34 /* tomighty.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = tomighty.icns; sourceTree = "<group>"; };
@@ -180,6 +174,7 @@
 		30DB72F718CD54C000293915 /* TYTomighty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYTomighty.h; path = Core/TYTomighty.h; sourceTree = "<group>"; };
 		30DB72F818CD54D200293915 /* TYDefaultTomighty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYDefaultTomighty.h; path = Core/TYDefaultTomighty.h; sourceTree = "<group>"; };
 		30DB72F918CD54D200293915 /* TYDefaultTomighty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYDefaultTomighty.m; path = Core/TYDefaultTomighty.m; sourceTree = "<group>"; };
+		C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomightyTests.xcconfig"; path = "../Pods/Pods-TomightyTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,9 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				304AF83618BD04BF00A2EA74 /* Cocoa.framework in Frameworks */,
-				3054083518D259F0009523AC /* OCHamcrest.framework in Frameworks */,
 				304AF83518BD04BF00A2EA74 /* XCTest.framework in Frameworks */,
-				3054083318D259E2009523AC /* OCMockito.framework in Frameworks */,
+				88742E1C44894488BB0F167C /* libPods-TomightyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,8 +299,7 @@
 		304AF81418BD04BE00A2EA74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3054083418D259F0009523AC /* OCHamcrest.framework */,
-				3054083218D259E2009523AC /* OCMockito.framework */,
+				0B1A27968CA44FEFB1DA3DB3 /* libPods-TomightyTests.a */,
 				304AF81518BD04BE00A2EA74 /* Cocoa.framework */,
 				304AF83418BD04BE00A2EA74 /* XCTest.framework */,
 				304AF81718BD04BE00A2EA74 /* Other Frameworks */,
@@ -363,6 +356,7 @@
 		304AF83A18BD04BF00A2EA74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */,
 				304AF83B18BD04BF00A2EA74 /* TomightyTests-Info.plist */,
 				304AF83C18BD04BF00A2EA74 /* InfoPlist.strings */,
 			);
@@ -511,10 +505,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 304AF84618BD04BF00A2EA74 /* Build configuration list for PBXNativeTarget "TomightyTests" */;
 			buildPhases = (
+				B7B8607396F24F888FD9E51D /* Check Pods Manifest.lock */,
 				304AF82F18BD04BE00A2EA74 /* Sources */,
 				304AF83018BD04BE00A2EA74 /* Frameworks */,
 				304AF83118BD04BE00A2EA74 /* Resources */,
 				30CFBF0718BD45BF000266B4 /* CopyFiles */,
+				94D0AC8D9A87412895298800 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -596,6 +592,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94D0AC8D9A87412895298800 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-TomightyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7B8607396F24F888FD9E51D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		304AF80E18BD04BE00A2EA74 /* Sources */ = {
@@ -789,6 +818,7 @@
 		};
 		304AF84718BD04BF00A2EA74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tomighty.app/Contents/MacOS/Tomighty";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -812,6 +842,7 @@
 		};
 		304AF84818BD04BF00A2EA74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tomighty.app/Contents/MacOS/Tomighty";
 				COMBINE_HIDPI_IMAGES = YES;

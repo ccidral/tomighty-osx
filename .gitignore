@@ -1,3 +1,13 @@
 **/*.xcodeproj/project.xcworkspace/xcshareddata/*.xccheckout
 **/*.xcodeproj/project.xcworkspace/xcuserdata/
 **/*.xcodeproj/xcuserdata/
+
+**/*.xcworkspace/project.xcworkspace/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+
+*.xccheckout
+
+src/Pods
+src/Podfile.lock
+
+src/.idea

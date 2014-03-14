@@ -1,0 +1,6 @@
+# no pods for main target yet
+
+target :TomightyTests, :exclusive => true do
+	pod 'OCHamcrest', '~> 3.0'
+	pod 'OCMockito', '~> 1.0'
+end
