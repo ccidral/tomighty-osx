@@ -23,27 +23,37 @@
     return self;
 }
 
+- (void)updateTimer:(id) eventData
+{
+    id <TYTimerContext> timerContext = eventData;
+    [ui updateRemainingTime:[timerContext getRemainingSeconds]];
+}
+
 - (void)updateAppUiInResponseToEventsFrom:(id <TYEventBus>)eventBus
 {
+
     [eventBus subscribeTo:POMODORO_START subscriber:^(id eventData) {
+        [self updateTimer: eventData];
         [ui switchToPomodoroState];
     }];
     
     [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
+        [self updateTimer: eventData];
         [ui switchToIdleState];
     }];
     
     [eventBus subscribeTo:SHORT_BREAK_START subscriber:^(id eventData) {
+        [self updateTimer: eventData];
         [ui switchToShortBreakState];
     }];
     
     [eventBus subscribeTo:LONG_BREAK_START subscriber:^(id eventData) {
+        [self updateTimer: eventData];
         [ui switchToLongBreakState];
     }];
     
     [eventBus subscribeTo:TIMER_TICK subscriber:^(id eventData) {
-        id <TYTimerContext> timerContext = eventData;
-        [ui updateRemainingTime:[timerContext getRemainingSeconds]];
+        [self updateTimer: eventData];
     }];
     
     [eventBus subscribeTo:POMODORO_COUNT_CHANGE subscriber:^(id eventData) {

@@ -40,8 +40,14 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
     [newStatusItem setImage:[self getIconImage:ICON_STATUS_IDLE]];
     [newStatusItem setAlternateImage:[self getIconImage:ICON_STATUS_ALTERNATE]];
     [newStatusItem setMenu:menu];
+    [newStatusItem setTitle:@"00:00"];
     
     return newStatusItem;
+}
+
+- (void)setRemainingTimeText:(NSString *)text
+{
+    [statusItem setTitle:text];
 }
 
 - (void)changeIcon:(NSString *)iconName
