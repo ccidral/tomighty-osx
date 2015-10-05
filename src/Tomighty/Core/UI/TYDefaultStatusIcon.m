@@ -34,7 +34,7 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
 
 - (NSStatusItem *)createStatusItem:(NSMenu *)menu
 {
-    NSStatusItem *newStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    NSStatusItem *newStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     
     [newStatusItem setHighlightMode:YES];
     [newStatusItem setImage:[self getIconImage:ICON_STATUS_IDLE]];
@@ -63,6 +63,8 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
         image = [imageLoader loadIcon:iconName];
         iconImageCache[iconName] = image;
     }
+    
+    image.template = YES;
     return image;
 }
 
