@@ -64,8 +64,14 @@
     [syntheticEventPublisher publishSyntheticEventsInResponseToOtherEventsFrom:eventBus];
     [soundAgent playSoundsInResponseToEventsFrom:eventBus];
     [userInterfaceAgent updateAppUiInResponseToEventsFrom:eventBus];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
     [self initMenuItemsIcons:imageLoader];
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center  shouldPresentNotification:(NSUserNotification *)notification
+{
+    return YES;
 }
 
 - (void)initMenuItemsIcons:(TYImageLoader *)imageLoader {
@@ -140,11 +146,6 @@
 - (void)enableResetPomodoroCountItem:(BOOL)enable
 {
     [self.resetPomodoroCountMenuItem setEnabled:enable];
-}
-
-- (void)setRemainingTimeText:(NSString *)text
-{
-    [self.remainingTimeMenuItem setTitle:text];
 }
 
 - (void)setPomodoroCountText:(NSString *)text
