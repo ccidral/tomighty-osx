@@ -10,7 +10,7 @@
 #import "TYStatusMenu.h"
 #import "TYStatusIcon.h"
 
-@interface TYAppDelegate : NSObject <NSApplicationDelegate, TYStatusMenu>
+@interface TYAppDelegate : NSObject <NSApplicationDelegate, TYStatusMenu, NSUserNotificationCenterDelegate>
 
 @property (weak) IBOutlet NSMenu *statusMenu;
 @property (weak) IBOutlet NSMenuItem *remainingTimeMenuItem;
