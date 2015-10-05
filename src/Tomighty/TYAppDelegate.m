@@ -142,11 +142,6 @@
     [self.resetPomodoroCountMenuItem setEnabled:enable];
 }
 
-- (void)setRemainingTimeText:(NSString *)text
-{
-    [self.remainingTimeMenuItem setTitle:text];
-}
-
 - (void)setPomodoroCountText:(NSString *)text
 {
     [self.pomodoroCountMenuItem setTitle:text];
