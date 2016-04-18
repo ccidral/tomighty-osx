@@ -14,6 +14,7 @@ extern NSString * const PREF_PLAY_SOUND_WHEN_TIMER_STARTS;
 extern NSString * const PREF_PLAY_SOUND_WHEN_TIMER_GOES_OFF;
 extern NSString * const PREF_PLAY_TICKTOCK_SOUND_DURING_POMODORO;
 extern NSString * const PREF_PLAY_TICKTOCK_SOUND_DURING_BREAK;
+extern NSString * const PREF_CONTINUOUS_MODE;
 
 @protocol TYPreferences <NSObject>
 

@@ -25,7 +25,8 @@ typedef NS_ENUM(NSInteger, TYEventType)
     POMODORO_COMPLETE         = 10,
     POMODORO_COUNT_CHANGE     = 11,
     
-    PREFERENCE_CHANGE         = 12
+    PREFERENCE_CHANGE         = 12,
+    READY_FOR_NEXT_TIMER      = 13
 };
 
 typedef void (^TYEventSubscriber)(id eventData);

@@ -57,6 +57,10 @@
 {
     [systemTimer interrupt];
     [eventBus publish:TIMER_STOP data:currentTimerContext];
+    if([currentTimerContext getRemainingSeconds] <= 0)
+    {
+        [eventBus publish:READY_FOR_NEXT_TIMER data:currentTimerContext];
+    }
 }
 
 @end

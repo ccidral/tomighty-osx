@@ -85,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06D37AE40A1319A03BABFB5B /* Pods-TomightyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomightyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TomightyTests/Pods-TomightyTests.release.xcconfig"; sourceTree = "<group>"; };
 		0B1A27968CA44FEFB1DA3DB3 /* libPods-TomightyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TomightyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		300AE29118D1444400264309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		300AE29318D1471F00264309 /* TYPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYPreferencesWindowController.h; path = Core/UI/TYPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -174,7 +175,7 @@
 		30DB72F718CD54C000293915 /* TYTomighty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYTomighty.h; path = Core/TYTomighty.h; sourceTree = "<group>"; };
 		30DB72F818CD54D200293915 /* TYDefaultTomighty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYDefaultTomighty.h; path = Core/TYDefaultTomighty.h; sourceTree = "<group>"; };
 		30DB72F918CD54D200293915 /* TYDefaultTomighty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYDefaultTomighty.m; path = Core/TYDefaultTomighty.m; sourceTree = "<group>"; };
-		C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomightyTests.xcconfig"; path = "../Pods/Pods-TomightyTests.xcconfig"; sourceTree = "<group>"; };
+		4FF38F252DFAF6505DB3EF67 /* Pods-TomightyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TomightyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TomightyTests/Pods-TomightyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +285,7 @@
 				304AF83918BD04BF00A2EA74 /* TomightyTests */,
 				304AF81418BD04BE00A2EA74 /* Frameworks */,
 				304AF81318BD04BE00A2EA74 /* Products */,
+				39F2ED307A40DC03E3A3F68E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,7 +358,6 @@
 		304AF83A18BD04BF00A2EA74 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */,
 				304AF83B18BD04BF00A2EA74 /* TomightyTests-Info.plist */,
 				304AF83C18BD04BF00A2EA74 /* InfoPlist.strings */,
 			);
@@ -481,6 +482,15 @@
 			name = Mock;
 			sourceTree = "<group>";
 		};
+		39F2ED307A40DC03E3A3F68E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FF38F252DFAF6505DB3EF67 /* Pods-TomightyTests.debug.xcconfig */,
+				06D37AE40A1319A03BABFB5B /* Pods-TomightyTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,6 +521,7 @@
 				304AF83118BD04BE00A2EA74 /* Resources */,
 				30CFBF0718BD45BF000266B4 /* CopyFiles */,
 				94D0AC8D9A87412895298800 /* Copy Pods Resources */,
+				3E38B626B44FAC4962695861 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -529,7 +540,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TY;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Gig Software";
 				TargetAttributes = {
 					304AF83218BD04BE00A2EA74 = {
@@ -594,6 +605,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E38B626B44FAC4962695861 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TomightyTests/Pods-TomightyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		94D0AC8D9A87412895298800 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,7 +632,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-TomightyTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TomightyTests/Pods-TomightyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B7B8607396F24F888FD9E51D /* Check Pods Manifest.lock */ = {
@@ -740,6 +766,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -799,6 +826,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tomighty/Tomighty-Prefix.pch";
 				INFOPLIST_FILE = "Tomighty/Tomighty-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.tomighty.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -811,6 +839,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tomighty/Tomighty-Prefix.pch";
 				INFOPLIST_FILE = "Tomighty/Tomighty-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.tomighty.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -818,7 +847,7 @@
 		};
 		304AF84718BD04BF00A2EA74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */;
+			baseConfigurationReference = 4FF38F252DFAF6505DB3EF67 /* Pods-TomightyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tomighty.app/Contents/MacOS/Tomighty";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -834,6 +863,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TomightyTests/TomightyTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Gig.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -842,7 +872,7 @@
 		};
 		304AF84818BD04BF00A2EA74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C85B4050EDD04BD5964B5A05 /* Pods-TomightyTests.xcconfig */;
+			baseConfigurationReference = 06D37AE40A1319A03BABFB5B /* Pods-TomightyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tomighty.app/Contents/MacOS/Tomighty";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -854,6 +884,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tomighty/Tomighty-Prefix.pch";
 				INFOPLIST_FILE = "TomightyTests/TomightyTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Gig.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
