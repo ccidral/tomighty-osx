@@ -71,8 +71,12 @@
 }
 
 - (void)initMenuItemsIcons:(TYImageLoader *)imageLoader {
-    [self.remainingTimeMenuItem setImage:[imageLoader loadIcon:@"icon-clock"]];
-    [self.stopTimerMenuItem setImage:[imageLoader loadIcon:@"icon-stop-timer"]];
+    NSImage *clockIcon = [imageLoader loadIcon:@"icon-clock"];
+    clockIcon.template = YES;
+    NSImage *timerIcon = [imageLoader loadIcon:@"icon-stop-timer"];
+    timerIcon.template = YES;
+    [self.remainingTimeMenuItem setImage:clockIcon];
+    [self.stopTimerMenuItem setImage:timerIcon];
     [self.startPomodoroMenuItem setImage:[imageLoader loadIcon:@"icon-start-pomodoro"]];
     [self.startShortBreakMenuItem setImage:[imageLoader loadIcon:@"icon-start-short-break"]];
     [self.startLongBreakMenuItem setImage:[imageLoader loadIcon:@"icon-start-long-break"]];

@@ -35,12 +35,13 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
 - (NSStatusItem *)createStatusItem:(NSMenu *)menu
 {
     NSStatusItem *newStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    
+    NSImage *iconImage = [self getIconImage:ICON_STATUS_IDLE];
+    iconImage.template = YES;
+
     [newStatusItem setHighlightMode:YES];
-    [newStatusItem setImage:[self getIconImage:ICON_STATUS_IDLE]];
-    [newStatusItem setAlternateImage:[self getIconImage:ICON_STATUS_ALTERNATE]];
+    [newStatusItem setImage:iconImage];
     [newStatusItem setMenu:menu];
-    
+
     return newStatusItem;
 }
 
