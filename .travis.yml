@@ -1,2 +1,15 @@
 language: objective-c
-xcode_project: src/Tomighty.xcodeproj
+xcode_project: ./src/Tomighty.xcodeproj
+xcode_scheme: Tomighty
+
+script: xcodebuild -project ./src/Tomighty.xcodeproj   -list
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "VOIhUFzAPQuRJYyDoFmxIDhgj8jiR69ZjbusUx0MQ+XBkzX2WIHqYkdcxqaYLRbjArUthvR0TViCrxg28Dc63PwwNTnG6jYaMs/gcoT4FheZVcR/1C3OTwGi1YPtz1lH7te4FHOH19aQaRASopb9/n++8hUhyBjzhAAXUubdSdvzuNNtwtIqKtGzpGaUt5i/l+MB7NG/4wD6Cpd2YuMeEHSaOFwyQiJhLuJWJBYeQWyPRQF6r8cSpi2VjNvUV6r8vZ3cFaFc+994jz5VzbsdHPOFWx5TYHZPljsPJVoUJqPqi2daq7HtBHHIxTb4Cy0FBrQMtswlwY7B9fFZMmj3cgs0+fx+63/zvimF650XpUn6Os3hVXH7eBvwDN4TFaRYTGO7YBX5MvNgXxq4INIb1lvtZ8XMC5PVYbJHC6BOs195oJ64qtOlggi01BI2lr7+qPZvTg7m+wmHo687uYbY1DGl9mUqI7L/FW6Pw6/mYaWJSVlea0aZC/kZqih26U0+1OWsPj0p07NRbIV/zOZbY9gyxKmHX/978ifvK+sgrbAiSuO/Ox4v0F8763gi8vUmUw0eQRJrFv8weoXfOTy/jYfzswzUW989Iqao+DFuheeVGIORsGk3MAwmWr1C/gArvbuDtruwDakAl6Yyk4OnKWG6l03nqPQ1NV+DkCdcVeU="
+  file: 'build/Tomighty.app'
+  skip_cleanup: true
+  on:
+    tags
+
