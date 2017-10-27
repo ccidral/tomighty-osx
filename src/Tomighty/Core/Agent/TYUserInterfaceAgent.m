@@ -53,6 +53,7 @@
     
     [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
         [ui switchToIdleState];
+        [self dispatchNewNotification:@"Timer stopped"];
     }];
     
     [eventBus subscribeTo:SHORT_BREAK_START subscriber:^(id eventData) {
