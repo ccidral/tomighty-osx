@@ -89,6 +89,11 @@
 
 - (void)startPomodoro
 {
+    NSLog(@"%d --- TEST", [preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]);
+    if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+        sleep(0.5);
+        turnDoNotDisturbOn();
+    }
     [self startTimer:POMODORO
          contextName:@"Pomodoro"
              minutes:[preferences getInt:PREF_TIME_POMODORO]];
@@ -96,6 +101,9 @@
 
 - (void)startShortBreak
 {
+    //if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+    //    turnDoNotDisturbOff();
+    //}
     [self startTimer:SHORT_BREAK
          contextName:@"Short break"
              minutes:[preferences getInt:PREF_TIME_SHORT_BREAK]];
@@ -103,6 +111,9 @@
 
 - (void)startLongBreak
 {
+    //if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+    //    turnDoNotDisturbOff();
+    //}
     [self startTimer:LONG_BREAK
          contextName:@"Long break"
              minutes:[preferences getInt:PREF_TIME_LONG_BREAK]];
@@ -197,5 +208,62 @@ OSStatus TYHotkeyHandler(EventHandlerCallRef next, EventRef evt, void *data) {
     }
     return noErr;
 }
+
+
+///
+/// This block of code for turning Do Not Disturb on and off
+/// is directly from https://stackoverflow.com/a/36385778/518130
+///
+void turnDoNotDisturbOn(void)
+{
+    // The trick is to set DND time range from 00:00 (0 minutes) to 23:59 (1439 minutes),
+    // so it will always be on
+    CFPreferencesSetValue(CFSTR("dndStart"), (__bridge CFPropertyListRef)(@(0.0f)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("dndEnd"), (__bridge CFPropertyListRef)(@(1440.f)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("doNotDisturb"), (__bridge CFPropertyListRef)(@(YES)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    // Notify all the related daemons that we have changed Do Not Disturb preferences
+    commitDoNotDisturbChanges();
+}
+
+
+void turnDoNotDisturbOff()
+{
+    CFPreferencesSetValue(CFSTR("dndStart"), NULL,
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("dndEnd"), NULL,
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("doNotDisturb"), (__bridge CFPropertyListRef)(@(NO)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    commitDoNotDisturbChanges();
+}
+
+void commitDoNotDisturbChanges(void)
+{
+    NSLog(@"--- CommitDND");
+    /// XXX: I'm using kCFPreferencesCurrentUser placeholder here which means that this code must
+    /// be run under regular user's account (not root/admin). If you're going to run this code
+    /// from a privileged helper, use kCFPreferencesAnyUser in order to toggle DND for all users
+    /// or drop privileges and use kCFPreferencesCurrentUser.
+    CFPreferencesSynchronize(CFSTR("com.apple.notificationcenterui"), kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: @"com.apple.notificationcenterui.dndprefs_changed"
+                                                                   object: nil userInfo: nil
+                                                       deliverImmediately: YES];
+}
+
 
 @end
