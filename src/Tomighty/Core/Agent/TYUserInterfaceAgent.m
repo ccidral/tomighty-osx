@@ -61,9 +61,23 @@
         }
     }];
     
-    [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
-        [ui switchToIdleState];
+    [eventBus subscribeTo:POMODORO_COMPLETE subscriber:^(id eventData) {
+        
         if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+            turnDoNotDisturbOff();
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                     1 * NSEC_PER_SEC),
+                       dispatch_get_main_queue(),
+                       ^{
+                           NSLog(@"--- Pomodoro complete");
+                           [self dispatchNewNotification:@"Pomodoro completed"];
+                       });
+        
+    }];
+    
+    [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
+        /*if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
                                      1 * NSEC_PER_SEC),
                        dispatch_get_main_queue(),
@@ -71,7 +85,11 @@
                            NSLog(@"--- DISABLE DND");
                            turnDoNotDisturbOff();
                        });
+        }*/
+        if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+            turnDoNotDisturbOff();
         }
+        [ui switchToIdleState];
     }];
     
     [eventBus subscribeTo:SHORT_BREAK_START subscriber:^(id eventData) {
