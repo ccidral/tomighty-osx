@@ -49,10 +49,29 @@
     [eventBus subscribeTo:POMODORO_START subscriber:^(id eventData) {
         [ui switchToPomodoroState];
         [self dispatchNewNotification:@"Pomodoro started"];
+        NSLog(@"%d --- ENABLE DND", [preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]);
+        if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                         1 * NSEC_PER_SEC),
+                           dispatch_get_main_queue(),
+                           ^{
+                               turnDoNotDisturbOn();
+                           });
+            
+        }
     }];
     
     [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
         [ui switchToIdleState];
+        if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                     1 * NSEC_PER_SEC),
+                       dispatch_get_main_queue(),
+                       ^{
+                           NSLog(@"--- DISABLE DND");
+                           turnDoNotDisturbOff();
+                       });
+        }
     }];
     
     [eventBus subscribeTo:SHORT_BREAK_START subscriber:^(id eventData) {
@@ -83,5 +102,62 @@
         }
     }];
 }
+
+///
+/// This block of code for turning Do Not Disturb on and off
+/// is directly from https://stackoverflow.com/a/36385778/518130
+///
+void turnDoNotDisturbOn(void)
+{
+    // The trick is to set DND time range from 00:00 (0 minutes) to 23:59 (1439 minutes),
+    // so it will always be on
+    CFPreferencesSetValue(CFSTR("dndStart"), (__bridge CFPropertyListRef)(@(0.0f)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("dndEnd"), (__bridge CFPropertyListRef)(@(1440.f)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("doNotDisturb"), (__bridge CFPropertyListRef)(@(YES)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    // Notify all the related daemons that we have changed Do Not Disturb preferences
+    commitDoNotDisturbChanges();
+}
+
+
+void turnDoNotDisturbOff()
+{
+    CFPreferencesSetValue(CFSTR("dndStart"), NULL,
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("dndEnd"), NULL,
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    CFPreferencesSetValue(CFSTR("doNotDisturb"), (__bridge CFPropertyListRef)(@(NO)),
+                          CFSTR("com.apple.notificationcenterui"),
+                          kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    
+    commitDoNotDisturbChanges();
+}
+
+void commitDoNotDisturbChanges(void)
+{
+    NSLog(@"--- CommitDND");
+    /// XXX: I'm using kCFPreferencesCurrentUser placeholder here which means that this code must
+    /// be run under regular user's account (not root/admin). If you're going to run this code
+    /// from a privileged helper, use kCFPreferencesAnyUser in order to toggle DND for all users
+    /// or drop privileges and use kCFPreferencesCurrentUser.
+    CFPreferencesSynchronize(CFSTR("com.apple.notificationcenterui"), kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: @"com.apple.notificationcenterui.dndprefs_changed"
+                                                                   object: nil userInfo: nil
+                                                       deliverImmediately: YES];
+}
+
+
 
 @end
