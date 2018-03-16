@@ -49,7 +49,7 @@
     [eventBus subscribeTo:POMODORO_START subscriber:^(id eventData) {
         [ui switchToPomodoroState];
         [self dispatchNewNotification:@"Pomodoro started"];
-        NSLog(@"%d --- ENABLE DND", [preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]);
+    
         if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
                                          1 * NSEC_PER_SEC),
@@ -70,22 +70,12 @@
                                      1 * NSEC_PER_SEC),
                        dispatch_get_main_queue(),
                        ^{
-                           NSLog(@"--- Pomodoro complete");
                            [self dispatchNewNotification:@"Pomodoro completed"];
                        });
         
     }];
     
     [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
-        /*if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                                     1 * NSEC_PER_SEC),
-                       dispatch_get_main_queue(),
-                       ^{
-                           NSLog(@"--- DISABLE DND");
-                           turnDoNotDisturbOff();
-                       });
-        }*/
         if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
             turnDoNotDisturbOff();
         }
@@ -165,7 +155,6 @@ void turnDoNotDisturbOff()
 
 void commitDoNotDisturbChanges(void)
 {
-    NSLog(@"--- CommitDND");
     /// XXX: I'm using kCFPreferencesCurrentUser placeholder here which means that this code must
     /// be run under regular user's account (not root/admin). If you're going to run this code
     /// from a privileged helper, use kCFPreferencesAnyUser in order to toggle DND for all users
