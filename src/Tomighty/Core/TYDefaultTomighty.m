@@ -96,7 +96,6 @@
 
 - (void)startShortBreak
 {
-
     [self startTimer:SHORT_BREAK
          contextName:@"Short break"
              minutes:[preferences getInt:PREF_TIME_SHORT_BREAK]];
@@ -104,9 +103,6 @@
 
 - (void)startLongBreak
 {
-    //if ([preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]) {
-    //    turnDoNotDisturbOff();
-    //}
     [self startTimer:LONG_BREAK
          contextName:@"Long break"
              minutes:[preferences getInt:PREF_TIME_LONG_BREAK]];
