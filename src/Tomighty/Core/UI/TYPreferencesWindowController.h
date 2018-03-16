@@ -22,6 +22,7 @@
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_pomodoro;
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_break;
 @property (weak) IBOutlet NSButton *check_show_notifications;
+@property (weak) IBOutlet NSButton *check_enable_do_not_disturb_during_pomodoro;
 @property (weak) IBOutlet NSButton *check_continuous_mode;
 @property (weak) IBOutlet NSPopUpButton *popup_status_icon_time_format;
 @property (weak) IBOutlet TYHotkeyControl *text_hotkey_start;
@@ -40,5 +41,6 @@
 - (IBAction)save_hotkey_start:(id)sender;
 - (IBAction)save_hotkey_stop:(id)sender;
 - (IBAction)save_show_notifications:(id)sender;
+- (IBAction)save_enable_do_not_disturb_during_pomodoro:(id)sender;
 
 @end

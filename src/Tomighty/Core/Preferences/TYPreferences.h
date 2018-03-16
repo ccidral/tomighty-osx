@@ -23,6 +23,7 @@ extern NSString * const PREF_HOTKEY_START;
 extern NSString * const PREF_HOTKEY_STOP;
 extern NSString * const PREF_CONTINUOUS_MODE;
 extern NSString * const PREF_ENABLE_NOTIFICATIONS;
+extern NSString * const PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO;
 
 @protocol TYPreferences <NSObject>
 

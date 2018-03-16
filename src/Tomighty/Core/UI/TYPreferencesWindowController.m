@@ -39,6 +39,7 @@
     [self.check_play_ticktock_sound_during_pomodoro setState:[preferences getInt:PREF_PLAY_TICKTOCK_SOUND_DURING_POMODORO]];
     [self.check_play_ticktock_sound_during_break setState:[preferences getInt:PREF_PLAY_TICKTOCK_SOUND_DURING_BREAK]];
     [self.check_show_notifications setState:[preferences getInt:PREF_ENABLE_NOTIFICATIONS]];
+    [self.check_enable_do_not_disturb_during_pomodoro setState:[preferences getInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO]];
     [self.check_continuous_mode setState:[preferences getInt:PREF_CONTINUOUS_MODE]];
     [self.popup_status_icon_time_format selectItemAtIndex:[preferences getInt:PREF_STATUS_ICON_TIME_FORMAT]];
     [self.text_hotkey_start
@@ -88,6 +89,10 @@
 
 - (IBAction)save_show_notifications:(id)sender {
     [preferences setInt:PREF_ENABLE_NOTIFICATIONS value:(int)[self.check_show_notifications state]];
+}
+
+- (IBAction)save_enable_do_not_disturb_during_pomodoro:(id)sender {
+    [preferences setInt:PREF_ENABLE_DO_NOT_DISTURB_DURING_POMODORO value:(int)[self.check_enable_do_not_disturb_during_pomodoro state]];
 }
 
 - (IBAction)save_continuous_mode:(id)sender {

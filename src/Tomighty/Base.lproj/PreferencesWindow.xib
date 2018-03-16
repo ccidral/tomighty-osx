@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1421" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -11,6 +11,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TYPreferencesWindowController">
             <connections>
                 <outlet property="check_continuous_mode" destination="K00-WD-P1n" id="dew-jz-0dY"/>
+                <outlet property="check_enable_do_not_disturb_during_pomodoro" destination="hm5-HW-XLi" id="Euw-1g-Jsf"/>
                 <outlet property="check_play_sound_when_timer_goes_off" destination="4gP-n3-o9H" id="FUX-Fi-uco"/>
                 <outlet property="check_play_sound_when_timer_starts" destination="UEf-gI-pZ6" id="VdU-XK-1aG"/>
                 <outlet property="check_play_ticktock_sound_during_break" destination="n8X-6J-yb1" id="fEo-Gf-VN3"/>
@@ -31,7 +32,7 @@
         <window title="Tomighty Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" frameAutosaveName="tomighty.window.preferences" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="196" y="240" width="393" height="253"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="393" height="253"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,8 +268,8 @@
                                     <rect key="frame" x="10" y="33" width="347" height="191"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-lu-bRj">
-                                            <rect key="frame" x="53" y="80" width="179" height="17"/>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-lu-bRj">
+                                            <rect key="frame" x="50" y="64" width="179" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="175" id="dZm-qd-6Yg"/>
                                             </constraints>
@@ -278,8 +279,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box autoresizesSubviews="NO" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="lBK-YY-ePX">
-                                            <rect key="frame" x="52" y="13" width="242" height="74"/>
+                                        <box autoresizesSubviews="NO" misplaced="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="lBK-YY-ePX">
+                                            <rect key="frame" x="49" y="-2" width="242" height="74"/>
                                             <view key="contentView" id="Xg6-Cb-Sav">
                                                 <rect key="frame" x="1" y="1" width="240" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,8 +317,8 @@
                                                 </constraints>
                                             </view>
                                         </box>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="UEf-gI-pZ6">
-                                            <rect key="frame" x="48" y="154" width="227" height="18"/>
+                                        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UEf-gI-pZ6">
+                                            <rect key="frame" x="50" y="160" width="227" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="223" id="OBn-h1-2ac"/>
                                                 <constraint firstAttribute="height" constant="14" id="OUQ-u1-yKM"/>
@@ -330,8 +331,8 @@
                                                 <action selector="save_play_sound_when_timer_starts:" target="-2" id="R6Y-Rf-af0"/>
                                             </connections>
                                         </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="4gP-n3-o9H">
-                                            <rect key="frame" x="48" y="134" width="244" height="18"/>
+                                        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gP-n3-o9H">
+                                            <rect key="frame" x="50" y="140" width="244" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="Zw4-ug-gct"/>
                                             </constraints>
@@ -343,8 +344,8 @@
                                                 <action selector="save_play_sound_when_timer_goes_off:" target="-2" id="DmH-Qw-rWX"/>
                                             </connections>
                                         </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Nlo-52-gcU">
-                                            <rect key="frame" x="48" y="114" width="251" height="18"/>
+                                        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nlo-52-gcU">
+                                            <rect key="frame" x="50" y="120" width="251" height="18"/>
                                             <buttonCell key="cell" type="check" title="Show notifications when timers go off" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Bzh-st-EPg">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -352,6 +353,17 @@
                                             <connections>
                                                 <action selector="save_show_notifications:" target="-2" id="xXF-j5-KHh"/>
                                             </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hm5-HW-XLi">
+                                            <rect key="frame" x="50" y="94" width="347" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Enable Do Not Disturb during Pomodoro" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9VL-Kp-dRg">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="save_enable_do_not_disturb_during_pomodoro:" target="-2" id="I5m-LS-Hh9"/>
+                                                </connections>
+                                            </buttonCell>
                                         </button>
                                     </subviews>
                                     <constraints>
